@@ -1,0 +1,172 @@
+#N canvas 0 0 1588 817 10;
+#X declare -lib mrpeach;
+#X obj 356 565 dac~;
+#X obj 362 328 knob 32 32 0 100 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 362 369 * 4.4;
+#X floatatom 362 391 5 0 0 0 - - -;
+#X obj 362 418 osc~ 440;
+#X obj 363 516 *~ 0.5;
+#X obj 362 445 +~;
+#X obj 218 336 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X floatatom 218 374 5 0 0 0 - - -;
+#X obj 445 407 - 10;
+#X obj 466 348 knob 32 32 0 30 0 0 empty empty empty 0 -8 0 8 -258113
+-258113 -13381 0 1;
+#X floatatom 466 387 5 0 0 0 - - -;
+#X obj 396 480 knob 32 32 0 0.5 0 0 empty empty empty 0 -8 0 8 -262144
+-1 -1 0 1;
+#X obj 511 105 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 525 94 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 541 105 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 512 31 5 0 0 0 - - -;
+#X obj 554 93 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 569 105 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 585 105 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 600 93 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 616 105 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 631 92 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 646 107 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 659 95 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 674 107 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 512 56 sel 1 2 3 4 5 6 7 8 9 10 11;
+#X obj 127 474 * 261.63;
+#X obj 127 418 pow;
+#X msg 127 386 1.05946;
+#X floatatom 127 507 5 0 0 0 - - -;
+#X obj 38 150 unpack f f f f f;
+#X obj 38 105 route addCursor removeCursor updateCursor;
+#X floatatom 141 180 5 0 0 0 - - -;
+#X obj 141 199 * 720;
+#X floatatom 58 180 5 0 0 0 - - -;
+#X obj 58 199 * 1280;
+#X obj 141 218 / 720;
+#X floatatom 141 279 5 0 0 0 - - -;
+#X obj 141 237 * 10;
+#X obj 141 259 int;
+#X obj 58 220 / 1280;
+#X floatatom 58 282 5 0 0 0 - - -;
+#X obj 58 261 int;
+#X obj 58 241 * 12;
+#X obj 38 78 TuioClient;
+#X msg -41 35 \; pd dsp 1;
+#X msg 31 34 \; pd dsp 0;
+#X obj 127 545 *;
+#X floatatom 127 570 5 0 0 0 - - -;
+#X obj 141 298 + 1;
+#X text 194 199 Obtener valores de 0 a 9;
+#X text -111 230 Obtener valores de 0 a 12;
+#X obj 445 429 osc~ 440;
+#X obj 115 79 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 795 461 import mrpeach;
+#X obj 801 534 packOSC;
+#X obj 780 337 pack \$1 \$2 \$3;
+#X msg 779 366 /penta/add \$1 \$2 \$3;
+#X msg 1061 368 /penta/remove \$1;
+#X msg 910 367 /penta/update \$1 \$2 \$3;
+#X obj 764 578 udpsend;
+#X msg 764 505 connect localhost 6666;
+#X obj 820 310 int;
+#X obj 846 310 int;
+#X obj 820 283 * 640;
+#X obj 859 283 * 640;
+#X obj 912 324 pack \$1 \$2 \$3;
+#X obj 952 297 int;
+#X obj 978 297 int;
+#X obj 952 270 * 640;
+#X obj 991 270 * 640;
+#X obj 1026 325 unpack f f;
+#X obj 787 205 unpack f f f f f;
+#X obj 944 205 unpack f f f f f;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 3 0 9 0;
+#X connect 4 0 6 0;
+#X connect 5 0 0 0;
+#X connect 5 0 0 1;
+#X connect 6 0 5 0;
+#X connect 7 0 8 0;
+#X connect 8 0 29 0;
+#X connect 8 0 28 1;
+#X connect 9 0 53 0;
+#X connect 10 0 11 0;
+#X connect 11 0 9 1;
+#X connect 12 0 5 1;
+#X connect 16 0 26 0;
+#X connect 26 0 13 0;
+#X connect 26 1 14 0;
+#X connect 26 2 15 0;
+#X connect 26 3 17 0;
+#X connect 26 4 18 0;
+#X connect 26 5 19 0;
+#X connect 26 6 20 0;
+#X connect 26 7 21 0;
+#X connect 26 8 22 0;
+#X connect 26 9 23 0;
+#X connect 26 10 24 0;
+#X connect 26 11 25 0;
+#X connect 27 0 30 0;
+#X connect 28 0 27 0;
+#X connect 29 0 28 0;
+#X connect 30 0 48 0;
+#X connect 30 0 4 0;
+#X connect 31 2 35 0;
+#X connect 31 3 33 0;
+#X connect 32 0 73 0;
+#X connect 32 1 72 0;
+#X connect 32 2 31 0;
+#X connect 32 2 74 0;
+#X connect 33 0 34 0;
+#X connect 34 0 37 0;
+#X connect 35 0 36 0;
+#X connect 36 0 41 0;
+#X connect 37 0 39 0;
+#X connect 38 0 50 0;
+#X connect 39 0 40 0;
+#X connect 40 0 38 0;
+#X connect 41 0 44 0;
+#X connect 42 0 8 0;
+#X connect 43 0 42 0;
+#X connect 44 0 43 0;
+#X connect 45 0 32 0;
+#X connect 45 1 54 0;
+#X connect 48 0 49 0;
+#X connect 50 0 48 1;
+#X connect 53 0 6 1;
+#X connect 56 0 61 0;
+#X connect 57 0 58 0;
+#X connect 58 0 56 0;
+#X connect 59 0 56 0;
+#X connect 60 0 56 0;
+#X connect 62 0 61 0;
+#X connect 63 0 57 1;
+#X connect 64 0 57 2;
+#X connect 65 0 63 0;
+#X connect 66 0 64 0;
+#X connect 67 0 60 0;
+#X connect 68 0 67 1;
+#X connect 69 0 67 2;
+#X connect 70 0 68 0;
+#X connect 71 0 69 0;
+#X connect 72 1 59 0;
+#X connect 73 1 57 0;
+#X connect 73 2 65 0;
+#X connect 73 3 66 0;
+#X connect 74 1 67 0;
+#X connect 74 2 70 0;
+#X connect 74 3 71 0;
